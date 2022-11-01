@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.carousel-item{
+    max-height: 40rem;
+}
+
+.hero{
+    height: 40vh;
+    align-items: center;
+}
+
+.galeria{
+    height: auto;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.row{
+    width: 65%;
+}
+
+.dark{
+    background-color:#343a40;
+    color: white;
+}
+.light{
+    background-color: #e9ecef;
+    color: black;
+}
