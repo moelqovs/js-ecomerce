@@ -28,7 +28,6 @@ function carritoPendiente(){
         document.getElementById("tabla").innerHTML+=`
         <tr>
             <td><img src=${bebida.imagen}></td>
-            <td>${bebida.id}</td>
             <td>${bebida.marca}</td>
             <td>${bebida.tipo}</td>
             <td>$ ${bebida.precio}</td>
@@ -120,7 +119,6 @@ Swal.fire({
         tablaCarrito.innerHTML+=`
             <tr>
                 <td><img src=${productoComprado.imagen}></td>
-                <td>${productoComprado.id}</td>
                 <td>${productoComprado.marca}</td>
                 <td>${productoComprado.tipo}</td>
                 <td>$ ${productoComprado.precio}</td>
@@ -138,6 +136,18 @@ Swal.fire({
 //finalizar la compra del carrito
 finalizarCompra.onclick = () => {
     //Vaciar carrito
+    if (carrito.length == 0){
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            iconColor:'#9d0208',
+            color: '#0b090a',
+            background:'#ffc300',
+            title: 'El carrito se encuentra vacío',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }else{
     carrito = [];
     document.getElementById("tabla").innerHTML="";
     carrito.splice(carrito.length,0);
@@ -154,10 +164,23 @@ finalizarCompra.onclick = () => {
         //Storage
         localStorage.removeItem('carrito');
     };
+}
 
 
     //Eliminar la compra del carrito
     eliminarCompra.onclick = () => {
+        if (carrito.length == 0){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                iconColor:'#f8f9fa',
+                color: '#0b090a',
+                background:'#ffc300',
+                title: 'El carrito se encuentra vacío',
+                showConfirmButton: false,
+                timer: 3000
+            });
+    }else{
     carrito = [];
     document.getElementById("tabla").innerHTML="";
     ///borrar el total
@@ -175,9 +198,9 @@ finalizarCompra.onclick = () => {
         //Vaciar Local Storage
         localStorage.removeItem('carrito');
     };
+}
 
-
-        //Cambio de Fondo 
+//Cambio de Fondo 
 
 //primer cambio de modo
 if(cambio != null){
